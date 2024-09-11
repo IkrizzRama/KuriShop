@@ -2,9 +2,8 @@ from django.shortcuts import render
 
 def show_main(request):
     context = {
-        'name' : 'Pistol Air',
-        'price': 'Rp.100.000',
-        'description': 'Menembakan Air'
+        'nama' : 'Muhammad Rizky Ramadhani',
+        'kelas': 'PBP A',
     }
 
     return render(request, "main.html", context)
