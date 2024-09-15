@@ -1,10 +1,25 @@
 from django.shortcuts import render
+from django.shortcuts import render, redirect   # Tambahkan import redirect di baris ini
+from main.forms import ObjectEntryForm
+from main.models import objectEntry
 
 def show_main(request):
+    object_entries = objectEntry.objects.all()
+
     context = {
         'nama' : 'Muhammad Rizky Ramadhani',
         'kelas': 'PBP A',
+        'object_entries': object_entries,
     }
 
     return render(request, "main.html", context)
-# Create your views here.
+
+def create_object_entry(request):
+    form = ObjectEntryForm(request.POST or None)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return redirect('main:show_main')
+
+    context = {'form': form}
+    return render(request, "create_object_entry.html", context)

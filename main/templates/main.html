@@ -3,8 +3,41 @@
 <h1>Kurishop</h1>
 
 <h5>Name:</h5>
-<p>{{ name }}</p>
+<p>{{ nama }}</p>
 
 <h5>Class:</h5>
-<p>{{ class }}</p>
+<p>{{ kelas }}</p>
+
+
+{% if not object_entries %}
+<p>Belum ada data Object pada kurishop.</p>
+{% else %}
+<table>
+  <tr>
+    <th>Object Name</th>
+    <th>Price</th>
+    <th>description</th>
+  </tr>
+
+  {% comment %} Berikut cara memperlihatkan data mood di bawah baris ini 
+  {% endcomment %} 
+  {% for object_entry in object_entries %}
+  <tr>
+    <td>{{object_entry.object}}</td>
+    <td>{{object_entry.price}}</td>
+    <td>{{object_entry.description}}</td>
+
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+<br />
+
+<a href="{% url 'main:create_object_entry' %}">
+  <button>Add New Mood Entry</button>
+</a>
+
 {% endblock content %}
+
+
