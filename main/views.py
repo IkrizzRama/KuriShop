@@ -1,3 +1,5 @@
+from django.http import HttpResponse
+from django.core import serializers
 from django.shortcuts import render
 from django.shortcuts import render, redirect   # Tambahkan import redirect di baris ini
 from main.forms import ObjectEntryForm
@@ -23,3 +25,17 @@ def create_object_entry(request):
 
     context = {'form': form}
     return render(request, "create_object_entry.html", context)
+
+def show_xml(request):
+    data = objectEntry.objects.all()
+
+def show_xml(request):
+    data = objectEntry.objects.all()
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json(request):
+    data = objectEntry.objects.all()
+
+def show_json(request):
+    data = objectEntry.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
