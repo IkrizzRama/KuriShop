@@ -8,14 +8,22 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+import datetime
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
+
+@login_required(login_url='/login')
 def show_main(request):
     object_entries = objectEntry.objects.all()
 
     context = {
         'nama' : 'Muhammad Rizky Ramadhani',
         'kelas': 'PBP A',
+        'npm'  : '2306240143',
         'object_entries': object_entries,
+        'last_login' : request.COOKIES['last_login'],
     }
 
     return render(request, "main.html", context)
@@ -33,12 +41,12 @@ def create_object_entry(request):
 def register(request):
     form = UserCreationForm()
 
-    if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your account has been successfully created!')
-            return redirect('main:login')
+    if form.is_valid():
+        user = form.get_user()
+        login(request, user)
+        response = HttpResponseRedirect(reverse("main:show_main"))
+        response.set_cookie('last_login', str(datetime.datetime.now()))
+        return response
     context = {'form':form}
     return render(request, 'register.html', context)
 
@@ -58,7 +66,9 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    return redirect('main:login')
+    response = HttpResponseRedirect(reverse('main:login'))
+    response.delete_cookie('last_login')
+    return response
 
 def show_xml(request):
     data = objectEntry.objects.all()
