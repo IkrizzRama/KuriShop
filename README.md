@@ -39,3 +39,5 @@ Penggunaan Postman:
 ![Screenshot 2024-09-17 233343](https://github.com/user-attachments/assets/b04120a3-3a74-45bf-afe0-440ce1d587c7)
 ![Screenshot 2024-09-17 233358](https://github.com/user-attachments/assets/93349d96-670c-4e8c-b19a-e25a7e6c21ec)
 ![Screenshot 2024-09-17 233411](https://github.com/user-attachments/assets/11f5619d-8841-4901-bb33-1ecdcc29b9f6)
+
+

@@ -4,6 +4,8 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect   # Tambahkan import redirect di baris ini
 from main.forms import ObjectEntryForm
 from main.models import objectEntry
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 def show_main(request):
     object_entries = objectEntry.objects.all()
@@ -25,6 +27,18 @@ def create_object_entry(request):
 
     context = {'form': form}
     return render(request, "create_object_entry.html", context)
+
+def register(request):
+    form = UserCreationForm()
+
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your account has been successfully created!')
+            return redirect('main:login')
+    context = {'form':form}
+    return render(request, 'register.html', context)
 
 def show_xml(request):
     data = objectEntry.objects.all()
