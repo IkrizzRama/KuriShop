@@ -41,3 +41,37 @@ Penggunaan Postman:
 ![Screenshot 2024-09-17 233411](https://github.com/user-attachments/assets/11f5619d-8841-4901-bb33-1ecdcc29b9f6)
 
 
+
+
+
+Tugas 4
+ 1. Apa perbedaan antara HttpResponseRedirect() dan redirect()
+ 2. Jelaskan cara kerja penghubungan model Product dengan User!
+ 3. Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.
+ 4. Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?
+ 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+ Jawab:
+ 1. HttpResponseRedirect() adalah fungsi yang secara eksplisit membuat respons HTTP untuk mengalihkan pengguna ke URL tertentu. Di sisi lain, redirect() adalah shortcut Django yang lebih ringkas dan otomatis mengarah ke URL atau view yang ditentukan, juga menangani resolusi URL dan pemrosesan URL dengan lebih mudah.
+
+ 2. Penghubungan model Product dengan User dilakukan dengan menambahkan field foreign key di model Product, yang merujuk ke model User. Dengan demikian, setiap produk akan memiliki referensi ke pengguna yang membuat atau memiliki produk tersebut.
+
+ 3. Authentication adalah proses untuk memverifikasi identitas pengguna, seperti memastikan username dan password yang dimasukkan adalah benar. Ini terjadi saat pengguna login. Sedangkan Authorization adalah proses untuk menentukan apakah pengguna yang terautentikasi memiliki izin untuk mengakses atau melakukan tindakan tertentu dalam aplikasi.
+ Django mengimplementasikan authentication melalui sistem pengguna dan grup yang terintegrasi, menggunakan model User dan middleware yang menangani session.
+
+ 4. Django menggunakan sesi (sessions) untuk mengingat pengguna yang telah login. Saat pengguna berhasil login, Django menyimpan ID pengguna dalam cookie yang disebut session cookie. Ini memungkinkan Django untuk mengenali pengguna di permintaan berikutnya. Kegunaan lain dari cookies termasuk menyimpan preferensi pengguna, sesi belanja, dan data analitik. Namun, tidak semua cookies aman; penting untuk menggunakan cookies dengan atribut seperti HttpOnly dan Secure untuk melindungi data pengguna.
+
+ 5. Implementasi Checklist Secara Step-by-Step
+ Membuat Fungsi Registrasi, Login, dan Logout:
+ Menggunakan Django’s built-in authentication views untuk membuat form dan views untuk registrasi, login, dan logout.
+
+ Membuat Akun Pengguna dan Dummy Data:
+ Membuat skrip atau menggunakan shell Django untuk membuat dua akun pengguna dan menambahkan tiga produk dummy untuk masing-masing.
+
+ Menghubungkan Model Product dengan User:
+ Menambahkan foreign key di model Product yang mengarah ke model User, seperti dijelaskan di atas.
+ Menampilkan Informasi Pengguna yang Login:
+ Memodifikasi template untuk menampilkan username pengguna yang sedang login dan menambahkan logika untuk membaca dan menyimpan cookie last login.
+
+ Menerapkan Cookies:
+ Menggunakan Django's session framework untuk mengatur cookies yang menyimpan informasi pengguna yang login, serta menambahkan logika untuk mencatat last login saat pengguna login.
