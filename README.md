@@ -1,3 +1,71 @@
+TUGAS 2
+1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+3. Jelaskan fungsi git dalam pengembangan perangkat lunak!
+4. Menurut Anda, dari semua framework yang ada, mengapa framework Django dijadikan permulaan pembelajaran pengembangan perangkat lunak?
+5. Mengapa model pada Django disebut sebagai ORM?
+
+Jawab:
+1. Definisikan Requirement dari Client:
+Client meminta halaman untuk menampilkan daftar produk dengan fitur pencarian dan filter berdasarkan kategori.
+
+URLs.py:
+Tentukan URL untuk halaman daftar produk (/products/).
+Pastikan terhubung dengan view yang tepat.
+
+Views.py:
+Buat view ProductListView yang mengambil data produk dari model.
+Terapkan pencarian dan filter berdasarkan kategori.
+
+Models.py:
+Definisikan model Product dengan atribut-atribut seperti nama, deskripsi, harga, dan kategori.
+
+Template HTML:
+Buat template HTML untuk menampilkan daftar produk.
+Tambahkan form pencarian dan filter.
+
+2. Request Client: Tampilkan daftar produk dengan fitur pencarian dan filter berdasarkan kategori.
+
+                      +-------------------+
+                      |     urls.py       |
+                      +-------------------+
+                              |
+                              v
+                      +-------------------+
+                      |     views.py      |
+                      +-------------------+
+                              |
+                              v
+          +-----------------------------------------+
+          |                 models.py               |
+          +-----------------------------------------+
+                              |
+                              v
+                      +-------------------+
+                      |   Template HTML   |
+                      +-------------------+
+
+3. Git adalah sistem kontrol versi yang memungkinkan pengembang untuk melacak perubahan dalam kode sumber selama pengembangan perangkat lunak. Fungsinya meliputi:
+
+Pencatatan Perubahan: Menyimpan versi kode yang berbeda untuk memudahkan pemantauan dan perubahan.
+Kolaborasi Tim: Memungkinkan beberapa pengembang bekerja pada kode yang sama tanpa konflik.
+Pemulihan Kode: Memungkinkan kembali ke versi sebelumnya jika diperlukan.
+Penyelarasan Proyek: Mengintegrasikan perubahan dari berbagai kontributor ke dalam proyek secara efisien.
+
+4. Django sering dipilih untuk pemula karena:
+Kesederhanaan: Django menyediakan struktur proyek yang terorganisir dengan baik dan mudah dipahami.
+Pendekatan Berbasis Konvensi: Memiliki aturan konvensi yang jelas membuat pemula dapat fokus pada logika aplikasi daripada konfigurasi.
+Dokumentasi yang Baik: Django memiliki dokumentasi yang sangat lengkap dan aktif, menjadikannya mudah dipelajari.
+
+5. Model pada Django disebut sebagai ORM (Object-Relational Mapping) karena:
+
+Menghubungkan Objek dengan Basis Data: Django menggunakan model untuk mendefinisikan struktur data yang terhubung langsung dengan basis data.
+Abstraksi Tingkat Tinggi: Memungkinkan pengembang untuk bekerja dengan objek Python daripada SQL mentah, menyederhanakan interaksi dengan basis data.
+Portabilitas Kode: Memungkinkan pengembang untuk menggunakan model yang sama dengan berbagai jenis basis data tanpa mengubah logika aplikasi yang mendasarinya.
+
+
+
+
 Tugas 3 
  1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
  2. Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?

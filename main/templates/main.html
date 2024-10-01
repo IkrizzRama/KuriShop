@@ -27,7 +27,21 @@
     <td>{{object_entry.price}}</td>
     <td>{{object_entry.description}}</td>
 
-  </tr>
+    <td>
+      <a href="{% url 'main:edit_object' object_entry.pk %}">
+          <button>
+              Edit
+          </button>
+      </a>
+  </td>
+  <td>
+    <a href="{% url 'main:delete_object' object_entry.pk %}">
+        <button>
+            Delete
+        </button>
+    </a>
+</td>
+</tr>
   {% endfor %}
 </table>
 {% endif %}

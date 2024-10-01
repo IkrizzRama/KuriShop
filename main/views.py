@@ -41,6 +41,29 @@ def create_object_entry(request):
     context = {'form': form}
     return render(request, "create_object_entry.html", context)
 
+def edit_object(request, id):
+    # Get object entry berdasarkan id
+    object = objectEntry.objects.get(pk = id)
+
+    # Set object entry sebagai instance dari form
+    form = ObjectEntryForm(request.POST or None, instance=object)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_mood.html", context)
+
+def delete_object(request, id):
+    # Get object berdasarkan id
+    object = objectEntry.objects.get(pk = id)
+
+    object.delete()
+    # Kembali ke halaman awal
+    return HttpResponseRedirect(reverse('main:show_main'))
+
 def register(request):
     form = UserCreationForm()
 
