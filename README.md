@@ -154,10 +154,14 @@ Tugas 4
 
 Jawab:
 1. Dalam CSS, urutan prioritas selector menentukan mana aturan yang diterapkan pada elemen ketika ada beberapa aturan yang mungkin berlaku. Urutan prioritasnya adalah sebagai berikut:
-# Inline Styles: Gaya yang ditetapkan langsung pada elemen menggunakan atribut style (contoh: <div style="color: red;">).
-# ID Selectors: Selector dengan ID (contoh: #example), memiliki bobot yang tinggi.
-# Class Selectors, Attribute Selectors, dan Pseudo-classes: Selector dengan kelas (contoh: .example), selector atribut (contoh: [type="text"]), dan pseudo-classes (contoh: :hover) memiliki bobot sedang.
-# Element Selectors dan Pseudo-elements: Selector untuk elemen (contoh: div, p) dan pseudo-elements (contoh: ::before, ::after) memiliki bobot yang lebih rendah.
+
+Inline Styles: Gaya yang ditetapkan langsung pada elemen menggunakan atribut style (contoh: <div style="color: red;">).
+
+ID Selectors: Selector dengan ID (contoh: #example), memiliki bobot yang tinggi.
+ 
+Class Selectors, Attribute Selectors, dan Pseudo-classes: Selector dengan kelas (contoh: .example), selector atribut (contoh: [type="text"]), dan pseudo-classes (contoh: :hover) memiliki bobot sedang.
+
+Element Selectors dan Pseudo-elements: Selector untuk elemen (contoh: div, p) dan pseudo-elements (contoh: ::before, ::after) memiliki bobot yang lebih rendah.
 # Universal Selector: Selector universal (*) memiliki bobot terendah.
 Dalam hal ada selector dengan bobot yang sama, aturan yang didefinisikan lebih dekat dengan elemen HTML akan diterapkan.
 
