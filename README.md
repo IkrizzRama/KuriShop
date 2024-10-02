@@ -162,7 +162,8 @@ ID Selectors: Selector dengan ID (contoh: #example), memiliki bobot yang tinggi.
 Class Selectors, Attribute Selectors, dan Pseudo-classes: Selector dengan kelas (contoh: .example), selector atribut (contoh: [type="text"]), dan pseudo-classes (contoh: :hover) memiliki bobot sedang.
 
 Element Selectors dan Pseudo-elements: Selector untuk elemen (contoh: div, p) dan pseudo-elements (contoh: ::before, ::after) memiliki bobot yang lebih rendah.
-# Universal Selector: Selector universal (*) memiliki bobot terendah.
+
+Universal Selector: Selector universal (*) memiliki bobot terendah.
 Dalam hal ada selector dengan bobot yang sama, aturan yang didefinisikan lebih dekat dengan elemen HTML akan diterapkan.
 
 2. Responsive design adalah konsep penting dalam pengembangan aplikasi web karena memungkinkan tampilan yang optimal di berbagai perangkat (desktop, tablet, smartphone). Hal ini memastikan bahwa pengguna mendapatkan pengalaman yang baik terlepas dari ukuran layar yang digunakan.
