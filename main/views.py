@@ -54,7 +54,7 @@ def edit_object(request, id):
         return HttpResponseRedirect(reverse('main:show_main'))
 
     context = {'form': form}
-    return render(request, "edit_mood.html", context)
+    return render(request, "edit_object.html", context)
 
 def delete_object(request, id):
     # Get object berdasarkan id

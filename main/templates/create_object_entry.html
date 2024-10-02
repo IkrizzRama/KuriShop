@@ -1,18 +1,59 @@
-{% extends 'base.html' %} 
-{% block content %}
-<h1>Add New Object Entry</h1>
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+<title>Create Object</title>
+{% endblock meta %}
 
-<form method="POST">
-  {% csrf_token %}
-  <table>
-    {{ form.as_table }}
-    <tr>
-      <td></td>
-      <td>
-        <input type="submit" value="Add Object Entry" />
-      </td>
-    </tr>
-  </table>
-</form>
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="flex flex-col min-h-screen bg-gradient-to-tr from-gray-100 to-gray-300">
+  <div class="container mx-auto px-4 py-12 mt-12 max-w-xl">
+    <h1 class="text-4xl font-bold text-center mb-10 text-indigo-900">Create New Object</h1>
+  
+    <div class="bg-white shadow-xl rounded-2xl p-8 form-style">
+      <form method="POST" class="space-y-8">
+        {% csrf_token %}
+        {% for field in form %}
+          <div class="flex flex-col">
+            <label for="{{ field.id_for_label }}" class="mb-2 font-semibold text-indigo-700">
+              {{ field.label }}
+            </label>
+            <div class="relative">
+              {{ field }}
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                {% if field.errors %}
+                  <svg class="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                  </svg>
+                {% else %}
+                  <svg class="h-5 w-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-7a1 1 0 11-2 0 1 1 0 012 0zM9 6a1 1 0 112 0v4a1 1 0 11-2 0V6z" clip-rule="evenodd"/>
+                  </svg>
+                {% endif %}
+              </div>
+            </div>
+            {% if field.help_text %}
+              <p class="mt-1 text-sm text-gray-500">{{ field.help_text }}</p>
+            {% endif %}
+            {% for error in field.errors %}
+              <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+            {% endfor %}
+          </div>
+        {% endfor %}
+        <div class="flex justify-center mt-10">
+          <button type="submit" class="group relative w-full flex justify-center py-3 px-6 border border-transparent text-lg font-semibold rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-in-out duration-300 shadow-md hover:shadow-xl">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
+              <svg class="h-5 w-5 text-white group-hover:text-gray-200 transition duration-300" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-7a1 1 0 11-2 0 1 1 0 012 0zM9 6a1 1 0 112 0v4a1 1 0 11-2 0V6z" clip-rule="evenodd"/>
+              </svg>
+            </span>
+            Create Object Entry
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
