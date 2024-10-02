@@ -143,3 +143,60 @@ Tugas 4
 
  Menerapkan Cookies:
  Menggunakan Django's session framework untuk mengatur cookies yang menyimpan informasi pengguna yang login, serta menambahkan logika untuk mencatat last login saat pengguna login.
+
+
+ Tugas 5
+1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
+3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+4. Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+
+Jawab:
+1. Dalam CSS, urutan prioritas selector menentukan mana aturan yang diterapkan pada elemen ketika ada beberapa aturan yang mungkin berlaku. Urutan prioritasnya adalah sebagai berikut:
+# Inline Styles: Gaya yang ditetapkan langsung pada elemen menggunakan atribut style (contoh: <div style="color: red;">).
+# ID Selectors: Selector dengan ID (contoh: #example), memiliki bobot yang tinggi.
+# Class Selectors, Attribute Selectors, dan Pseudo-classes: Selector dengan kelas (contoh: .example), selector atribut (contoh: [type="text"]), dan pseudo-classes (contoh: :hover) memiliki bobot sedang.
+# Element Selectors dan Pseudo-elements: Selector untuk elemen (contoh: div, p) dan pseudo-elements (contoh: ::before, ::after) memiliki bobot yang lebih rendah.
+# Universal Selector: Selector universal (*) memiliki bobot terendah.
+Dalam hal ada selector dengan bobot yang sama, aturan yang didefinisikan lebih dekat dengan elemen HTML akan diterapkan.
+
+2. Responsive design adalah konsep penting dalam pengembangan aplikasi web karena memungkinkan tampilan yang optimal di berbagai perangkat (desktop, tablet, smartphone). Hal ini memastikan bahwa pengguna mendapatkan pengalaman yang baik terlepas dari ukuran layar yang digunakan.
+
+Contoh Aplikasi:
+Sudah Menerapkan Responsive Design: Aplikasi e-commerce seperti Amazon atau Shopee, di mana layout dan elemen menyesuaikan dengan ukuran layar perangkat.
+Belum Menerapkan Responsive Design: Beberapa situs berita yang memiliki layout statis, sehingga konten tidak tampil optimal pada perangkat kecil, seperti situs yang hanya memiliki desain desktop tanpa versi mobile.
+
+3. Margin: Ruang di luar elemen yang memisahkan elemen tersebut dari elemen lain. Margin tidak mempengaruhi ukuran elemen itu sendiri.
+Cara Implementasi:
+.element {
+    margin: 20px; /* margin atas, bawah, kiri, dan kanan */
+}
+
+Border: Garis yang mengelilingi elemen. Border membatasi elemen dan memberikan definisi visual.
+Cara Implementasi:
+.element {
+    border: 2px solid black; /* ketebalan, jenis, dan warna border */
+}
+
+
+Padding: Ruang di dalam elemen antara konten dan batas border. Padding meningkatkan ruang di dalam elemen.
+Cara Implementasi:
+.element {
+    padding: 15px; /* padding atas, bawah, kiri, dan kanan */
+}
+
+
+4. Flexbox: Flexbox adalah model layout satu dimensi yang digunakan untuk mengatur ruang di dalam kontainer. Ini memungkinkan elemen dalam kontainer untuk beradaptasi dengan ukuran ruang yang tersedia. Kegunaannya termasuk mengatur tata letak baris atau kolom secara responsif, menyelaraskan elemen, dan mengontrol arah dan urutan elemen.
+
+Grid Layout: Grid adalah model layout dua dimensi yang digunakan untuk mengatur elemen dalam baris dan kolom. Grid sangat berguna untuk tata letak yang kompleks, seperti galeri gambar atau dashboard. Kegunaannya termasuk pembagian area dalam grid yang dapat mengakomodasi elemen dalam berbagai ukuran.
+
+5. Menghapus dan Mengedit Produk: Saya mulai dengan menambahkan fungsi untuk menghapus dan mengedit produk di aplikasi. Pertama, saya membuka file views.py dan menambahkan fungsi edit_product dan delete_product. Untuk fungsi edit, saya menggunakan form yang sudah ada untuk memudahkan pengeditan produk. Setelah itu, saya menambahkan URL yang sesuai di urls.py agar pengguna bisa mengakses halaman edit. Untuk menghapus produk, saya menambahkan konfirmasi di frontend agar pengguna yakin sebelum menghapus.
+
+Kustomisasi Desain Halaman Login, Register, dan Tambah Produk: Saya kemudian beralih ke halaman login, register, dan tambah produk. Saya menggunakan framework CSS Tailwind untuk membuat desain yang lebih menarik. Saya merombak struktur HTML dengan menambahkan elemen-elemen seperti gambar latar, tombol yang lebih menarik, dan penyesuaian warna agar halaman terlihat lebih hidup.
+
+Kustomisasi Halaman Daftar Produk: Selanjutnya, saya fokus pada halaman daftar produk. Di sini, saya menambahkan kondisi untuk memeriksa apakah ada produk yang terdaftar. Jika tidak ada, saya menampilkan gambar sedih dengan pesan yang menyatakan bahwa belum ada produk yang terdaftar. Jika sudah ada produk, saya menampilkan detail produk dalam bentuk card yang menarik, dengan menggunakan Tailwind CSS untuk styling.
+
+Menambahkan Tombol Edit dan Hapus pada Setiap Card Produk: Dalam setiap card produk, saya menambahkan dua tombol, satu untuk mengedit dan satu lagi untuk menghapus produk. Tombol ini memiliki fungsi yang saya buat sebelumnya, sehingga pengguna dapat dengan mudah melakukan perubahan atau menghapus produk.
+
+Membuat Navigation Bar Responsif: Terakhir, saya membuat navigation bar (navbar) yang responsif untuk aplikasi. Saya menggunakan fitur responsif dari Tailwind untuk memastikan navbar terlihat baik di semua ukuran layar, baik mobile maupun desktop. Saya menambahkan tautan ke halaman login, register, dan daftar produk agar navigasi menjadi lebih mudah.
