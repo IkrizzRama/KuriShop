@@ -205,3 +205,100 @@ Kustomisasi Halaman Daftar Produk: Selanjutnya, saya fokus pada halaman daftar p
 Menambahkan Tombol Edit dan Hapus pada Setiap Card Produk: Dalam setiap card produk, saya menambahkan dua tombol, satu untuk mengedit dan satu lagi untuk menghapus produk. Tombol ini memiliki fungsi yang saya buat sebelumnya, sehingga pengguna dapat dengan mudah melakukan perubahan atau menghapus produk.
 
 Membuat Navigation Bar Responsif: Terakhir, saya membuat navigation bar (navbar) yang responsif untuk aplikasi. Saya menggunakan fitur responsif dari Tailwind untuk memastikan navbar terlihat baik di semua ukuran layar, baik mobile maupun desktop. Saya menambahkan tautan ke halaman login, register, dan daftar produk agar navigasi menjadi lebih mudah.
+
+
+
+TUGAS 6
+1. Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+2. Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?
+3. Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?
+4. Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+
+
+Jawab:
+1. Interaktivitas pada halaman web:
+JavaScript memungkinkan elemen-elemen dinamis seperti animasi, efek hover, atau tampilan popup, sehingga membuat halaman web lebih hidup dan menarik perhatian pengguna.
+
+Pemrograman di sisi klien (client-side):
+JavaScript dieksekusi langsung di browser pengguna, sehingga dapat memproses banyak tugas seperti validasi form atau manipulasi data tanpa harus mengirim permintaan ke server, yang mengurangi waktu loading.
+
+Manipulasi DOM (Document Object Model):
+JavaScript memungkinkan pengubahan elemen HTML atau CSS secara real-time, seperti menambah konten baru, menghapus elemen, atau mengubah gaya tanpa harus me-refresh halaman. Ini sangat penting untuk menciptakan aplikasi web yang responsif dan dinamis.
+
+Pengembangan full-stack:
+Dengan platform seperti Node.js, JavaScript dapat digunakan di sisi server juga. Ini memudahkan pengembang untuk menggunakan satu bahasa di frontend dan backend, menyederhanakan alur kerja dan pemeliharaan kode.
+
+Kompatibilitas lintas platform:
+JavaScript didukung oleh semua browser modern dan dapat digunakan di berbagai sistem operasi, sehingga aplikasi web yang dibangun bisa diakses secara universal di perangkat yang berbeda.
+
+
+2. Await digunakan untuk menangani operasi asynchronous, seperti fetch(), agar proses tersebut dapat dieksekusi secara synchronous-like dalam blok kode async. Fungsinya adalah:
+
+Menunggu Penyelesaian Promise:
+await memastikan bahwa eksekusi kode akan berhenti sejenak di baris fetch() sampai permintaan HTTP selesai, sehingga kita dapat langsung mengakses hasilnya tanpa harus menggunakan .then() atau .catch(). Hal ini membuat kode lebih mudah dibaca dan dikelola.
+
+Menghindari Pemrosesan Sebelum Data Selesai:
+Tanpa await, fetch() hanya akan mengembalikan promise yang masih "pending", bukan hasil dari permintaan tersebut. Jadi, jika kita mencoba mengakses data sebelum fetch() selesai, kita akan mendapatkan hasil yang tidak diinginkan (misalnya, undefined atau objek promise), yang dapat menyebabkan kesalahan atau hasil yang tidak sesuai.
+
+
+3. Decorator csrf_exempt digunakan pada view Django untuk mengecualikan pemeriksaan CSRF (Cross-Site Request Forgery) pada permintaan yang masuk. CSRF adalah mekanisme keamanan yang memastikan bahwa permintaan POST yang masuk ke server berasal dari sumber yang sah (misalnya, halaman yang dibuat oleh situs web tersebut) dan tidak dari sumber yang berbahaya.
+
+Jika @csrf_exempt tidak digunakan dan permintaan AJAX POST tidak menyertakan token CSRF, maka Django akan menolak permintaan tersebut dengan kesalahan 403 Forbidden. Ini disebabkan karena Django menganggap permintaan tersebut mungkin berasal dari sumber yang tidak sah, sehingga menandainya sebagai potensi serangan CSRF.
+
+
+4. Pembersihan data input pengguna tidak hanya dilakukan di frontend saja, tetapi juga di backend karena beberapa alasan utama yang berkaitan dengan keamanan dan integritas data yaitu:
+
+Keamanan dari Manipulasi:
+Validasi di frontend saja mudah dihindari oleh pengguna yang berpengalaman atau malicious users. Mereka dapat memanipulasi data input langsung di browser (misalnya melalui browser developer tools) atau mengirim permintaan langsung ke server melalui alat seperti Postman. Jika tidak ada validasi di backend, data yang tidak aman dapat tetap masuk ke sistem.
+
+Perlindungan dari Serangan:
+Pembersihan input di backend melindungi dari serangan seperti SQL Injection, Cross-Site Scripting (XSS), dan Remote Code Execution. Dengan validasi dan pembersihan input di backend, risiko serangan ini dapat diminimalkan, bahkan jika input yang tidak valid berhasil melewati lapisan frontend.
+
+Konsistensi dan Integritas Data:
+Validasi di backend memastikan bahwa semua data yang masuk ke database memiliki format dan nilai yang benar, terlepas dari bagaimana data tersebut dikirim. Ini menjaga konsistensi data dan mencegah kesalahan yang dapat terjadi jika validasi hanya bergantung pada frontend.
+
+Backend Sebagai Sumber Kebenaran:
+Backend bertindak sebagai lapisan yang memproses logika inti dari aplikasi. Oleh karena itu, backend harus memastikan bahwa setiap data yang diterima dari pengguna sudah bersih dan sesuai dengan spesifikasi yang ditetapkan. Hanya mengandalkan frontend dapat menyebabkan ketidakkonsistenan antara data yang diterima dan yang diolah.
+
+Klien Tidak Dapat Dipercaya Sepenuhnya:
+Frontend (klien) dianggap sebagai lingkungan yang tidak sepenuhnya dapat dipercaya karena kode frontend (HTML, CSS, dan JavaScript) dapat dengan mudah diubah oleh pengguna. Oleh karena itu, backend harus selalu melakukan validasi dan pembersihan untuk memastikan bahwa semua data yang diterima benar-benar aman.
+
+
+5. + Mengubah Tugas 5 Menjadi Menggunakan AJAX
+Analisis Komponen yang Ada: Tinjau tugas 5 yang telah dibuat sebelumnya, terutama bagian di mana form pengisian mood dan tampilan daftar mood berada. Pastikan untuk memahami bagian mana yang perlu diubah agar menggunakan AJAX.
+Pisahkan Bagian Pengambilan dan Pengiriman Data: Tentukan bagaimana data akan diambil dan dikirim menggunakan permintaan AJAX (GET/POST) alih-alih langsung menggunakan template rendering atau form submission standar.
+
++ Mengimplementasikan AJAX GET
+Modifikasi Tampilan Kartu Data Mood: Ubah tampilan atau template HTML agar tidak menampilkan langsung daftar mood ketika halaman pertama kali dimuat. Sebagai gantinya, buat area kosong yang nantinya akan diisi menggunakan data dari AJAX GET.
+Tambahkan Logika untuk Pengambilan Data secara Asinkron: Buat logika JavaScript yang melakukan permintaan fetch() atau XMLHttpRequest untuk mengambil data dari backend. Pastikan untuk menangani respons yang diterima dan menggunakannya untuk memperbarui tampilan kartu mood pada halaman.
+Pastikan Data yang Diambil Hanya Milik Pengguna yang Login: Di backend, buat view baru yang hanya mengembalikan data milik pengguna yang sedang login. Gunakan pemfilteran pada query agar data yang dikirim ke frontend hanya mencakup data yang relevan untuk pengguna tersebut.
+Hubungkan View dengan URL yang Dapat Diakses AJAX: Tambahkan path baru di urls.py yang mengarah ke view yang telah dibuat. Dengan cara ini, permintaan AJAX GET dapat diarahkan ke view tersebut untuk mendapatkan data.
+
++ Mengimplementasikan AJAX POST
+Membuat Modal untuk Penambahan Mood:
+Buat modal di halaman HTML yang muncul saat tombol tertentu ditekan. Modal ini akan berisi form yang memungkinkan pengguna untuk memasukkan mood baru. Tambahkan event listener di JavaScript untuk menampilkan modal saat tombol ditekan, serta menutupnya saat penambahan berhasil.
+
+Tambahkan Logika untuk Mengirim Data Mood ke Backend:
+Buat logika JavaScript untuk menangani submit form dari modal tersebut. Gunakan AJAX POST untuk mengirim data input dari form ke backend tanpa me-refresh halaman. Pastikan bahwa data yang dikirim mengikuti format yang diharapkan oleh backend (misalnya menggunakan FormData atau application/x-www-form-urlencoded).
+
+Membuat View untuk Menangani Permintaan POST di Backend:
+Buat atau modifikasi view Django untuk menerima data yang dikirim dari AJAX POST. View ini harus melakukan validasi input dan menambah mood baru ke dalam database jika input valid. Setelah itu, view harus mengembalikan respons JSON yang menandakan status (misalnya, success atau error).
+
+Bersihkan Form Setelah Penambahan Berhasil:
+Setelah permintaan POST berhasil, bersihkan form yang ada di modal untuk menghapus input sebelumnya. Ini dapat dilakukan dengan mengatur ulang nilai dari elemen input yang ada. Selain itu, tutup modal agar pengguna dapat melihat hasilnya di halaman utama.
+
++ Refresh Halaman secara Asinkron Tanpa Reload Halaman Utama
+Panggil Fungsi Pengambilan Data (AJAX GET) setelah Penambahan Berhasil:
+Setelah menambahkan mood baru, panggil kembali fungsi yang telah dibuat untuk mengambil daftar mood (AJAX GET). Ini memastikan bahwa daftar mood yang ditampilkan selalu mutakhir tanpa perlu me-refresh seluruh halaman.
+
+Perbarui Daftar Mood secara Dinamis:
+Ketika respons baru diterima dari AJAX GET, perbarui elemen HTML yang menampilkan daftar mood. Gunakan hasil yang diterima dari backend untuk membuat ulang elemen-elemen mood di halaman.
+
++ Menangani Kesalahan dan Validasi
+Validasi Input Sebelum Mengirimkan Data:
+Lakukan validasi di frontend sebelum mengirimkan data untuk memastikan input tidak kosong atau memiliki nilai yang valid. Jika ada kesalahan, tampilkan pesan kesalahan kepada pengguna dan cegah permintaan AJAX POST.
+
+Tampilkan Pesan Kesalahan Jika Penambahan Gagal:
+Jika penambahan mood gagal (misalnya, ada kesalahan validasi di backend), tampilkan pesan kesalahan di modal tanpa menutupnya. Ini memberikan umpan balik kepada pengguna tentang mengapa penambahan gagal dan memungkinkan mereka untuk memperbaiki input.
+

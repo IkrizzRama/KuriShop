@@ -3,6 +3,7 @@
 
 {% block meta %}
 <title>Kurishop</title>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js"></script>
 {% endblock meta %}
 
 {% block content %}
@@ -57,11 +58,11 @@
           </div>
           <div class="mb-4">
             <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
-            <textarea id="price" name="price" rows="3" class="mt-1 block w-full h-52 resize-none border border-gray-300 rounded-md p-2 hover:border-blue-700" placeholder="Describe your price" required></textarea>
+            <textarea id="price" name="price" rows="3" class="mt-1 block w-full resize-none border border-gray-300 rounded-md p-2 hover:border-blue-700" placeholder="Your Object Price" required></textarea>
           </div>
           <div class="mb-4">
             <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-            <input type="text" id="description" name="description" min="1" max="10" class="mt-1 block w-full border border-gray-300 rounded-md p-2 hover:border-blue-700" required>
+            <input type="text" id="description" name="description"  class="mt-1 block w-full h-52 border border-gray-300 rounded-md p-2 hover:border-blue-700" placeholder="Description of your Object" required>
           </div>
         </form>
       </div>
@@ -143,7 +144,7 @@
         classNameString = "flex flex-col items-center justify-center min-h-[24rem] p-6";
         htmlString = `
             <div class="flex flex-col items-center justify-center min-h-[24rem] p-6">
-                <img src="{% static 'image/sedih-banget.png' %}" alt="Sad face" class="w-32 h-32 mb-4"/>
+                <img src="{% static 'static/image/sedih-banget.png' %}" alt="Sad face" class="w-40 h-40 mb-4"/>
                 <p class="text-center text-gray-600 mt-4">Belum ada data object pada mental health tracker.</p>
             </div>
         `;
@@ -151,6 +152,8 @@
     else {
         classNameString = "columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 w-full"
         objectEntries.forEach((item) => {
+            const object = DOMPurify.sanitize(item.fields.object);
+            const price = DOMPurify.sanitize(item.fields.price);
             htmlString += `
             <div class="relative break-inside-avoid">
                 <div class="absolute top-2 z-10 left-1/2 -translate-x-1/2 flex items-center -space-x-2">

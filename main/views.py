@@ -14,6 +14,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
+from django.utils.html import strip_tags
 
 
 @login_required(login_url='/login')
@@ -24,7 +25,6 @@ def show_main(request):
         'nama' : request.user.username,
         'kelas': 'PBP A',
         'npm'  : '2306240143',
-
         'last_login' : request.user.last_login,
     }
 
@@ -46,8 +46,8 @@ def create_object_entry(request):
 @csrf_exempt
 @require_POST
 def add_object_entry_ajax(request):
-    object = request.POST.get("object")
-    price = request.POST.get("price")
+    object = strip_tags(request.POST.get("object")) # strip HTML tags!
+    price = strip_tags(request.POST.get("price")) # strip HTML tags!
     description = request.POST.get("description")
     user = request.user
 
